@@ -1,0 +1,11 @@
+# eog <filename>
+# eog '/home/jcastellanos/Desktop/Images/camera.jpeg' 
+
+Previous image : Alt left
+Next image : Alt right
+First image : Alt Home
+Last image : Alt End
+Close : Ctrl W
+Zoom in : Ctrl +
+Zoom out : Ctrl -
+Normal size : Ctrl 0

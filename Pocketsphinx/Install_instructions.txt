@@ -1,0 +1,111 @@
+Pocketsphinx_Installation
+
+Building application with pocketsphinx
+
+
+0) Install additional packages:
+
+# sudo apt-get update 
+# sudo apt-get install automake autoconf 
+# sudo apt-get install libtool 
+# sudo apt-get install  build-essential  
+# sudo apt-get install liboil0.3-dev   
+# sudo apt-get install libxml2-dev  
+# sudo apt-get install  libglib2.0-dev   
+# sudo apt-get install  socket  libfaad-dev   libfaac-dev 
+# sudo apt-get install buildbot
+# sudo apt-get install autopoint
+# sudo apt-get install bison
+# sudo apt-get install flex
+
+Installation   (~/sphinx)
+--------------
+Pocketsphinx is a library that depends on another library called SphinxBase which provides common functionality across all CMUSphinx projects. To install Pocketsphinx, you need to install both Pocketsphinx and Sphinxbase. It's possible to use Pocketsphinx both in Linux and in Windows.
+
+First of all, download the released packages pocketsphinx and sphinxbase, checkout them from subversion or download a snapshot. For more details see 111. Unpack them into same directory. On Windows, you will need to rename 'sphinxbase-X.Y' (where X.Y is the SphinxBase version number) to simply 'sphinxbase' for this to work.
+
+http://cmusphinx.sourceforge.net/wiki/download/
+e.g. 
+http://sourceforge.net/projects/cmusphinx/files/sphinxbase/0.6.1/
+http://sourceforge.net/projects/cmusphinx/files/pocketsphinx/0.6.1/
+
+
+Unix-like Installation
+
+In a unix-like environment (such as Linux, Solaris, FreeBSD etc):
+
+1) On step one, build and install SphinxBase. If you downloaded directly from the repository. 
+
+http://sourceforge.net/projects/cmusphinx/files/sphinxbase/0.6.1/
+
+% mkdir sphinx
+% cd sphinx
+% tar xfvz sphinxbase-0.6.1.tar.gz
+
+You need to do this at least once to generate the configure file:
+
+% cd sphinxbase-0.6.1/
+% ./autogen.sh
+
+    * if you downloaded the release version, or ran autogen.sh at least once, then compile and install:
+
+% ./configure
+% make
+% sudo make install
+
+    *  If you want to use fixed-point arithmetic, you must configure SphinxBase with the --enable-fixed option. You can also set installation prefix with --prefix. You can also configure with or without python.
+    *  The sphinxbase will be installed in /usr/local/ folder. Not every system loads libraries from this folder automatically. To load them you need to configure the path to look for shared libaries. It can be done either in the file /etc/ld.so.conf or with exporting environment variables:
+
+export LD_LIBRARY_PATH=/usr/local/lib
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+
+
+• Then change to pocketsphinx folder and perform the same steps
+
+% cd ~/sphinx/
+% tar xfvz  pocketsphinx-0.6.1.tar.gz
+% cd  pocketsphinx-0.6.1/
+
+% ./configure
+% make
+% sudo make install
+
+    *   To test installation, run pocketsphinx_continuous and check that it recognizes words you are saying to the microphone.
+
+(/usr/local/bin)
+--- MIc ---
+%  amixer cset numid=68   1  or 0
+%  amixer cset numid=69   1  or 0
+(/etc/environment)
+%  export LD_LIBRARY_PATH=/usr/local/lib
+%  export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+
+%  cd ~/sphinx
+%  pocketsphinx_continuous
+
+or
+
+%  pocketsphinx_continuous -lm 0753.lm -dict 0753.dic
+
+---  Depending on the type of the model you trained. To use the model in pocketsphinx, simply point to it with the -hmm option: ---
+
+pocketsphinx_continuous -hmm <your_new_model_folder> -lm your_lm -dict your_dict.
+
+%  pocketsphinx_continuous -hmm  ~/sphinx/voxforge_es_sphinx.cd_cont_1500  -lm 4706.lm -dict 4706.dic
+
+
+
+
+
+ export DISPLAY=:0.0
+ export GST_PLUGIN_PATH=/usr/local/lib/gstreamer-0.10/
+
+
+
+pocketsphinx_continuous -hmm ~/sphinx/voxforge_es_sphinx.cd_cont_1500 -lm  ~/sphinx/es/H4.arpa.Z.DMP -mdef  ~/sphinx/voxforge_es_sphinx.cd_cont_1500/mdef -dict ~/sphinx/es/ES_corto.dict -feat s3_1x39
+
+pocketsphinx_continuous -hmm ~/sphinx/es/H4.cd_continuous_8gau -lm  ~/sphinx/es/H4.arpa.Z.DMP -mdef ~/sphinx/es/H4.2500.mdef -dict ~/sphinx/es/ES_corto.dict -feat s3_1x39
+
+
+pocketsphinx_continuous -hmm ~/sphinx/es/H4.cd_continuous_8gau -lm  ~/sphinx/es/H4.arpa.Z.DMP -mdef ~/sphinx/es/H4.2500.mdef -dict ~/sphinx/es/h4.dict -feat s3_1x39
+

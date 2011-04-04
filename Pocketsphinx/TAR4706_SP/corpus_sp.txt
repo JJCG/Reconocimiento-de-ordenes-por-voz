@@ -1,0 +1,30 @@
+abrir navegador
+cerrar navegador
+nuevo correo
+adelantar
+retrazar
+siguiente ventana
+ultima ventana
+abrir reproductor de audio
+cerrar reproductor de audio
+abrir reproductor de video
+cerrar reproductor de video
+uno
+dos
+tres
+cuatro
+cinco
+seis
+siete
+ocho
+nueve
+diez
+abrir herramientas
+cerrar herramientas
+cerrar todo
+abrir facebook
+cerrar facebook
+abrir reporte de clima 
+cerrar reporte de clima
+abrir reporte del tráfico
+cerrar reporte del tráfico

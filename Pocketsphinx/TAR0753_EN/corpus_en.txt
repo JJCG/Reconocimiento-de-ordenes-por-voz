@@ -1,0 +1,30 @@
+open browser
+close browser
+new e-mail
+forward
+backward
+next window
+last window
+open music player
+close music player
+open video player
+close video player
+one
+two
+three
+four
+five
+six
+seven
+eight
+nine
+ten
+open tools
+close tools
+close all
+open facebook
+close facebook
+open weather
+close weather
+open traffic report
+close traffic report
